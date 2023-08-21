@@ -31,7 +31,7 @@ def employee_todo(employee_id):
           f"is done with tasks ({todo_task}/{total_task}):")
 
     for title in list_task_complete:
-        print(f"\t{title}")
+        print(f"\t {title}")
 
 
 if __name__ == "__main__":

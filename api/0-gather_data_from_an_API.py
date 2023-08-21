@@ -28,7 +28,7 @@ def employee_todo(employee_id):
                           for task in todo_data if task['completed']]
 
     print(f"Employee {name_employee} "
-          f"is done with tasks {todo_task}/{total_task}:")
+          f"is done with tasks ({todo_task}/{total_task}):")
 
     for title in list_task_complete:
         print(f"\t{title}")

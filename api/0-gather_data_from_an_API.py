@@ -8,7 +8,8 @@ import requests
 import sys
 
 
-def employee_todo(employee_id):
+if __name__ == "__main__":
+    employee_id = int(sys.argv[1])
     base_url = "https://jsonplaceholder.typicode.com"
     user_id = f"{base_url}/users/{employee_id}"
     todo = f"{base_url}/todos?userId={employee_id}"
@@ -19,21 +20,16 @@ def employee_todo(employee_id):
     user_data = response_user.json()
     todo_data = response_todo.json()
 
-    name_employee = user_data['name']
+    name = user_data['name']
 
-    todo_task = sum(1 for task in todo_data if task['completed'])
-    total_task = len(todo_data)
+    todo_done = sum(1 for task in todo_data if task['completed'])
+    todo_count = len(todo_data)
 
     list_task_complete = [task['title']
                           for task in todo_data if task['completed']]
 
-    print(f"Employee {name_employee} "
-          f"is done with tasks ({todo_task}/{total_task}):")
+    print("Employee {} is done with tasks({}/{}):"
+          .format(name, todo_done, todo_count))
 
     for title in list_task_complete:
-        print(f"\t {title}")
-
-
-if __name__ == "__main__":
-    employee_id = int(sys.argv[1])
-    employee_todo(employee_id)
+        print("\t {}".format(title))
